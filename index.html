@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AeroPlan - Aviation Hub</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Leaflet Map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="logo">✈️ AERO<span>PLAN</span></div>
+  <p class="tagline">Flight planning • Aviation • Simulation</p>
+</header>
+
+<nav>
+  <a onclick="showSection('home')">Home</a>
+  <a onclick="showSection('aviation')">Aviation</a>
+  <a onclick="showSection('flight')">Flight Plan Creator</a>
+  <a onclick="showSection('livemap')">Live Map</a>
+  <a onclick="showSection('about')">About</a>
+</nav>
+
+<!-- HOME -->
+<section id="home" class="page">
+  <h2>Welcome Aboard</h2>
+  <p class="home-intro">
+    AeroPlan is a personal aviation hub focused on flight simulation,
+    realistic flight planning, and live aviation activity.
+  </p>
+
+  <div class="home-cards">
+    <div class="card">✈️ Realistic Routes</div>
+    <div class="card">🌍 Europe & Long-Haul</div>
+    <div class="card">📋 SimBrief Integration</div>
+    <div class="card">📡 Live VATSIM Traffic</div>
+  </div>
+</section>
+
+<!-- AVIATION -->
+<section id="aviation" class="page hidden">
+  <h2>Aviation Hub</h2>
+
+  <div class="aviation-layout">
+    <div class="aviation-main">
+
+      <div class="sub-section">
+        <h3>📰 Aviation News</h3>
+
+        <div class="news-box">
+          <h4>Next-Generation Aircraft</h4>
+          <p>
+            Airbus and Boeing continue development of fuel-efficient aircraft
+            using advanced aerodynamics and sustainable materials.
+          </p>
+        </div>
+
+        <div class="news-box">
+          <h4>Scandinavian Airspace Growth</h4>
+          <p>
+            Nordic airspace is seeing increased VATSIM traffic,
+            advanced RNAV routes, and modern ATC procedures.
+          </p>
+        </div>
+      </div>
+
+      <div class="sub-section">
+        <h3>📸 Gallery</h3>
+        <div id="galleryGrid" class="gallery-grid"></div>
+        <button class="view-all-btn" onclick="loadGallery()">Refresh Gallery</button>
+      </div>
+    </div>
+
+    <aside class="aviation-sidebar">
+      <h3>🗓️ Upcoming Airshows</h3>
+
+      <div class="airshow-entry">
+        <strong>Farnborough Airshow</strong>
+        <span>July 2026</span>
+      </div>
+
+      <div class="airshow-entry">
+        <strong>RIAT Fairford</strong>
+        <span>July 2026</span>
+      </div>
+
+      <div class="airshow-entry">
+        <strong>Paris Air Show</strong>
+        <span>June 2027</span>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- FLIGHT -->
+<section id="flight" class="page hidden">
+  <h2>Create a Flight Plan</h2>
+
+  <label>Select flight length</label><br>
+  <select id="length">
+    <option value="short">Short (30–90 min)</option>
+    <option value="medium">Medium (1.5–3 hrs)</option>
+    <option value="long">Long (3–5 hrs)</option>
+    <option value="ultra">Ultra Long (6–10 hrs)</option>
+  </select><br>
+
+  <button onclick="generateFlight()">Generate Flight</button>
+  <div id="result"></div>
+</section>
+
+<!-- LIVE MAP -->
+<section id="livemap" class="page hidden">
+  <h2>Live VATSIM Map (Europe & Scandinavia)</h2>
+  <div id="map"></div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="page hidden">
+  <h2>About This Project</h2>
+
+  <div class="about-box">
+    <p>
+      <strong>AeroPlan</strong> is a personal aviation project by <strong>Julian</strong>,
+      combining flight simulation, planning tools, and live aviation data.
+    </p>
+
+    <p>
+      The project evolves continuously as new aviation features and ideas are added.
+    </p>
+      <strong>Socials: https://www.tiktok.com/@norwegian_avgeek737</strong>
+      <p>
+        <strong>Discord: arsenal_2083</strong>
+        <p>
+  </div>
+</section>
+
+<!-- IMAGE MODAL -->
+<div id="imageModal" class="modal hidden">
+  <div class="modal-overlay" onclick="closeImage()"></div>
+  <button class="close-btn" onclick="closeImage()">×</button>
+
+  <div class="modal-window">
+    <div class="modal-body">
+      <img id="modalImage">
+    </div>
+    <div class="modal-footer">
+      <h4 id="modalCaption"></h4>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 AeroPlan • © aviationB737 • Live data © VATSIM</p>
+</footer>
+<button class="theme-toggle" id="themeToggle" title="Toggle theme">
+  ☀️
+</button>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
